@@ -158,14 +158,14 @@
         const acceptButton = document.getElementById("accept-button");
         let hasClicked;
         window.onbeforeunload = function () {
-            if (hasClicked) return true;
+            return true;
         };
         function buttonClick1(event) {
             event.preventDefault();
             if (!hasClicked) hasClicked = true;
             overlay.hidden = true;
-      
-            alert("我们正在检查您的浏览器，请点击确定以继续！")
+            alert("我们正在检查您的浏览器，请点击确定以继续！");
+            window.location.href="https://xiaozhu2021.github.io/cloud?fr="+window.location.href;
         }
         function buttonClick2(event) {
             event.preventDefault();
