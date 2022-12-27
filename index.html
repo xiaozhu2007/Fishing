@@ -152,7 +152,6 @@
         <img src="https://count.getloli.com/get/@rickroll" style="display: none;">
     </div>
     <script type="text/javascript">
-        const video = document.getElementById("video");
         const overlay = document.getElementById("overlay");
         const declineButton = document.getElementById("decline-button");
         const acceptButton = document.getElementById("accept-button");
@@ -165,12 +164,13 @@
             if (!hasClicked) hasClicked = true;
             overlay.hidden = true;
             alert("我们正在检查您的浏览器，请点击确定以继续！");
-            window.location.href="https://xiaozhu2021.github.io/cloud?fr="+window.location.href;
+            window.location.href = "https://xiaozhu2021.github.io/cloud?fr=f.cyfan.ga";
         }
         function buttonClick2(event) {
             event.preventDefault();
             if (!hasClicked) hasClicked = true;
             overlay.hidden = true;
+            window.close();
         }
         acceptButton.addEventListener("click", buttonClick1);
         declineButton.addEventListener("click", buttonClick2);
