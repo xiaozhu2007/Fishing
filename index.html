@@ -169,11 +169,13 @@
         function buttonClick1(event) {
             // event.preventDefault();
             if (!hasClicked) hasClicked = true;
-            window.location.href = "/iframe.html?fr=f.cyfan.ga";
+            window.location.href = "/iframe.html?fr=" + window.location.href;
         }
         function buttonClick2(event) {
             event.preventDefault();
             if (!hasClicked) hasClicked = true;
+            var blank_window = window.open("#/", "_self")
+            blank_window.close();
         }
         acceptButton.addEventListener("click", buttonClick1);
         declineButton.addEventListener("click", buttonClick2);
