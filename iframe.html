@@ -8,19 +8,22 @@
       src="about:blank"
       id="ifr"
       scrolling="auto"
+      border="0"
       frameborder="0"
       marginwidth="0"
       marginheight="0"
       vspace="0"
       hspace="0"
       allowtransparency="true"
+      framespacing="0"
+      allowfullscreen="true"
       ><p>Your browser does not support iframes.</p></iframe
     >
     <script>
-      var iframe = document.getElementById("ifr");
+      var iframe = document.getElementById("ifr"); // 获取对象
       iframe.height = window.innerHeight;
       iframe.width = window.innerWidth;
-      iframe.src = atob("aHR0cHM6Ly9sY2hhdDAubmV0bGlmeS5hcHAv");
+      iframe.src = atob("aHR0cHM6Ly9wbGF5ZXIuYmlsaWJpbGkuY29tL3BsYXllci5odG1sP2FpZD04MDQzMzAyMiZidmlkPUJWMUdKNDExeDdoNyZjaWQ9MTM3NjQ5MTk5JnBhZ2U9MQ=="); // 目标地址
     </script>
   </body>
 </html>
