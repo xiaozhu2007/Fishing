@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
     />
-    <title>❤️站❤️长❤️推❤️荐❤️</title>
+    <title>站❤️长❤️推❤️荐</title>
     <style type="text/css">
       p {
         margin: 0;
@@ -161,7 +161,7 @@
             <b>under the age of 18</b> and we need to confirm your age.
           </p>
           <p class="overlay-title">
-            由于&times;&times;原因部分地区无法正常播放
+            由于ISP等原因部分地区无法正常播放
           </p>
           <div class="overlay-buttons-wrapper">
             <div id="accept-button" class="overlay-button">已满18岁</div>
@@ -185,11 +185,11 @@
         // event.preventDefault()
         if (!hasClicked) hasClicked = true;
         setTimeout(function () {
-          window.alert("我们正在检查您的线路...请等待自动跳转!");
+          window.alert("我们正在检查您的线路...请等待5秒!");
           setTimeout(function () {
             window.location.href = "/iframe.html?from=" + window.location.href;
-          }, 25 * 1000);
-        }, 500);
+          }, 5 * 1000);
+        }, 1000);
       }
       function buttonClick2(event) {
         event.preventDefault();
